@@ -5,33 +5,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>姜广的个人网页</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #e3f2fd; color: #444; line-height: 1.8; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-        header { background: linear-gradient(135deg, #2196f3, #1e88e5); color: #fff; padding: 40px 0; text-align: center; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); border-bottom: 5px solid #1976d2; }
-        header h1 { font-size: 3.8rem; font-weight: 800; letter-spacing: 2px; }
-        header p {
-            font-size: 1.4rem;
-            opacity: 0.9;
-            margin-top: 10px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: #e3f2fd;
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        section { padding: 60px 0; background-color: #fff; border-radius: 10px; margin-bottom: 40px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); }
-        section h2 { font-size: 3rem; color: #444; margin-bottom: 30px; text-align: center; position: relative; }
-        section h2::after { content: ""; position: absolute; left: 50%; bottom: -10px; transform: translateX(-50%); width: 60px; height: 3px; background-color: #2196f3; border-radius: 3px; }
-        p { font-size: 1.2rem; text-align: justify; margin-bottom: 20px; color: #555; }
-        ul { list-style-type: none; padding-left: 0; }
-        ul li { font-size: 1.3rem; margin-bottom: 15px; padding-left: 25px; position: relative; }
-        ul li::before { content: "◉"; color: #2196f3; position: absolute; left: 0; top: 0; }
-        footer { background-color: #222; color: #aaa; text-align: center; padding: 30px 0; box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.1); }
-        .contact-icons { display: flex; justify-content: center; margin-top: 20px; }
-        .contact-icons img { width: 60px; margin: 0 20px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2)); }
-        .contact-icons img:hover { transform: scale(1.15); box-shadow: 0 0 15px rgba(33, 150, 243, 0.7); }
-        .qq-code, .wechat-code { display: none; position: absolute; top: -250%; left: 50%; transform: translateX(-50%); background-color: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); z-index: 999; }
-        .qq-code img, .wechat-code img { width: 200px; display: block; margin: 0 auto; }
-        @media screen and (max-width: 768px) { header h1 { font-size: 2.8rem; } header p { font-size: 1.1rem; } section h2 { font-size: 2.5rem; } p { font-size: 1.1rem; } ul li { font-size: 1.1rem; } .contact-icons img { width: 45px; } .qq-code img, .wechat-code img { width: 150px; } }
+
+        body {
+            font-family: 'Helvetica Neue', 'Roboto', Arial, sans-serif;
+            line-height: 1.8;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4A90E2, #9013FE);
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            margin-bottom: 0;
+        }
+
+        section {
+            padding: 60px 0;
+            background-color: #fff;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            font-size: 2.8rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            border-bottom: 2px solid #4A90E2;
+            display: inline-block;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "▶";
+            color: #4A90E2;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        footer {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .contact-icons img {
+            width: 60px;
+            margin: 0 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-icons img:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(74, 144, 226, 0.7);
+        }
+
+        .qq-code, .wechat-code {
+            display: none;
+            position: absolute;
+            top: -220%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            z-index: 999;
+        }
+
+        .qq-code img, .wechat-code img {
+            width: 180px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.1rem;
+            }
+            section h2 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            ul li {
+                font-size: 1rem;
+            }
+            .contact-icons img {
+                width: 45px;
+            }
+            .qq-code img, .wechat-code img {
+                width: 150px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -65,8 +197,8 @@
 
     <footer>
         <div class="container">
-            <p><strong>&copy; 2024 姜广的个人网页 | 仅供个人使用</strong></p>
-            <p style="font-size: 1.2rem; color: #fff;"><strong>通过以下方式与我联系：</strong></p>
+            <p>&copy; 2024 姜广的个人网页 | 仅供个人使用</p>
+            <p>通过以下方式与我联系：</p>
             <div class="contact-icons">
                 <img src="qq_爱给网_aigei_com.png" alt="QQ" onclick="toggleQrCode('qq')">
                 <img src="icon_微信-logo_爱给网_aigei_com.png" alt="微信" onclick="toggleQrCode('wechat')">
@@ -84,6 +216,7 @@
         function toggleQrCode(type) {
             var qqCode = document.getElementById('qqCode');
             var wechatCode = document.getElementById('wechatCode');
+
             if (type === 'qq') {
                 qqCode.style.display = qqCode.style.display === 'block' ? 'none' : 'block';
                 wechatCode.style.display = 'none';
@@ -91,6 +224,8 @@
                 wechatCode.style.display = wechatCode.style.display === 'block' ? 'none' : 'block';
                 qqCode.style.display = 'none';
             }
+
+            // 添加事件监听器，用于点击页面任意位置隐藏二维码
             document.addEventListener('click', function(e) {
                 if (!e.target.closest('.contact-icons img') && !e.target.closest('.qq-code') && !e.target.closest('.wechat-code')) {
                     qqCode.style.display = 'none';
