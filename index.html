@@ -141,47 +141,6 @@
         .qr-code img {
             width: 180px;
         }
-        .share-buttons {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-        .share-buttons button {
-            background: #4A90E2;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-bottom: 10px;
-        }
-        .share-menu {
-            display: none;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .share-menu a {
-            display: block;
-            margin: 5px 0;
-            color: #4A90E2;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-        .share-menu a:hover {
-            text-decoration: underline;
-        }
-        .qr-code-menu {
-            display: none;
-            margin-top: 10px;
-        }
-        .qr-code-menu canvas {
-            width: 150px;
-        }
         @media screen and (max-width: 768px) {
             header h1 {
                 font-size: 2.5rem;
@@ -197,26 +156,12 @@
             }
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
 </head>
 <body>
     <header>
         <div class="container">
             <h1>姜广的个人网页</h1>
             <p>全栈开发 | 运维专家 | 产品优化</p>
-        </div>
-        <div class="share-buttons">
-            <button onclick="toggleShareMenu()">分享</button>
-            <div class="share-menu" id="shareMenu">
-                <a href="https://twitter.com/share?url=https://yourdomain.com" target="_blank">Twitter</a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourdomain.com" target="_blank">Facebook</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://yourdomain.com" target="_blank">LinkedIn</a>
-                <button onclick="generateQRCode()">生成二维码</button>
-                <button onclick="shareToWeChat()">分享到微信</button>
-                <div class="qr-code-menu" id="qrCodeMenu">
-                    <canvas id="qrcode"></canvas>
-                </div>
-            </div>
         </div>
     </header>
     <section id="about">
@@ -272,41 +217,6 @@
                 }
             });
         }
-
-        function toggleShareMenu() {
-            var shareMenu = document.getElementById('shareMenu');
-            shareMenu.style.display = shareMenu.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function generateQRCode() {
-            var qrCodeMenu = document.getElementById('qrCodeMenu');
-            qrCodeMenu.style.display = qrCodeMenu.style.display === 'block' ? 'none' : 'block';
-            var qrcode = document.getElementById('qrcode');
-            QRCode.toCanvas(qrcode, window.location.href, function (error) {
-                if (error) console.error(error);
-                console.log('QR code generated!');
-            });
-        }
-
-        function shareToWeChat() {
-            if (navigator.share) {
-                navigator.share({
-                    title: document.title,
-                    url: window.location.href
-                }).then(() => {
-                    console.log('Thanks for sharing!');
-                }).catch(console.error);
-            } else {
-                alert('Web Share API is not supported in your browser.');
-            }
-        }
-
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.share-buttons')) {
-                document.getElementById('shareMenu').style.display = 'none';
-                document.getElementById('qrCodeMenu').style.display = 'none';
-            }
-        });
     </script>
 </body>
 </html>
