@@ -1,158 +1,269 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>姜广的个人网页</title>
+    <title>Angus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        body, h1, h2, p, ul, li {
+        /* Reset styles */
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', 'Roboto', Arial, sans-serif;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #e9ecef;
+            background-color: #f1f1f1;
             color: #333;
-            line-height: 1.8;
+            line-height: 1.6;
             overflow-x: hidden;
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
+
+        header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.4em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        header {
-            background: linear-gradient(135deg, #4A90E2, #9013FE);
-            color: #fff;
-            text-align: center;
-            padding: 40px 0;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-            border-radius: 0 0 20px 20px;
-        }
-        header::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 200%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(-50%) rotate(-30deg);
-            transform-origin: center center;
-            pointer-events: none;
-        }
-        header h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        header p {
-            font-size: 1.5rem;
-            margin-top: 10px;
-            font-weight: 600;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
+
         section {
-            background-color: #fff;
-            border-radius: 20px;
-            margin: 50px 0;
-            padding: 60px 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 80px 0;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
         }
-        section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
+
         section h2 {
-            font-size: 2.5rem;
             text-align: center;
+            margin-bottom: 40px;
             color: #333;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #4A90E2;
-            display: inline-block;
-            padding-bottom: 10px;
+            font-size: 2.2em;
+            font-weight: 600;
         }
-        p, li {
-            font-size: 1.2rem;
-            color: #555;
+
+        #about p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
             line-height: 1.8;
-            text-align: justify;
+            color: #444;
+            font-size: 1.1em;
         }
-        ul {
-            list-style-type: none;
+
+        #skills ul {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #skills li {
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 12px;
+            background: #eee;
+            border-radius: 10px;
+            margin: 12px 0 20px 0;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            border-radius: 10px;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card h3 {
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.5em;
+        }
+
+        .project-duration {
+            color: #888;
+            font-size: 1em;
+            margin: 8px 0;
+        }
+
+        .project-desc {
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        .project-points {
+            list-style: none;
             padding-left: 0;
         }
-        li::before {
-            content: "▶";
-            color: #4A90E2;
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        footer {
-            background-color: #222;
-            color: #aaa;
-            text-align: center;
-            padding: 30px 0;
-            box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+
+        .project-points li {
             position: relative;
-            border-radius: 20px 20px 0 0;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            color: #666;
+            font-size: 1em;
+            line-height: 1.6;
         }
-        .contact-heading {
-            font-size: 1.3rem;
-            color: #fff;
+
+        .project-points li::before {
+            content: "•";
+            color: #6a11cb;
+            position: absolute;
+            left: 0;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            margin-top: 15px;
         }
-        .contact-icons {
+
+        #contact {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .contact-buttons {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
-            position: relative;
+            gap: 30px;
+            margin-top: 30px;
         }
-        .contact-icons img {
-            width: 60px;
-            margin: 0 15px;
+
+        .contact-button {
+            padding: 14px 28px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            background: #6a11cb;
+            color: white;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
-        .contact-icons img:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 15px rgba(74, 144, 226, 0.7);
+
+        .contact-button:hover {
+            background: #2575fc;
+            transform: translateY(-5px);
         }
+
         .qr-code {
-            display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
-            z-index: 999;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: none;
+            transition: all 0.3s ease;
         }
+
+        .qr-code.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            display: block;
+        }
+
         .qr-code img {
-            width: 180px;
+            max-width: 220px;
         }
-        @media screen and (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #333;
+            color: white;
+            margin-top: 100px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 50px 20px;
             }
-            section h2, p, li {
-                font-size: 1rem;
+
+            h1 {
+                font-size: 2.4em;
             }
-            .contact-icons img {
-                width: 45px;
+
+            section {
+                padding: 60px 0;
             }
-            .qr-code img {
-                width: 150px;
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 0 15px;
+            }
+
+            .project-card {
+                padding: 25px;
+            }
+
+            .contact-button {
+                padding: 12px 24px;
             }
         }
     </style>
@@ -160,63 +271,152 @@
 <body>
     <header>
         <div class="container">
-            <h1>姜广的个人网页</h1>
-            <p>全栈开发|运维专家|产品优化</p>
+            <h1>ANGUS</h1>
+            <p class="subtitle">全栈开发工程师</p>
         </div>
     </header>
+
     <section id="about">
         <div class="container">
             <h2>关于我</h2>
-            <p>我是姜广，拥有多年的全栈开发和运维经验，擅长高效的开发与维护。致力于产品的高质量和稳定性，精通多种技术栈。我参与了电子商务、教育、金融等多个行业的项目，能够快速适应不同领域的需求。</p>
-            <p>我对前沿技术如人工智能和区块链有浓厚的兴趣，关注这些领域的最新发展。通过参与开源项目，我与全球开发者合作，共享知识和经验。</p>
-            <p>我的目标是不断提升自己的技术能力，帮助企业和个人实现数字化梦想。</p>
+            <p>我拥有多年的全栈开发和运维经验，擅长高效的开发与维护。致力于产品的高质量和稳定性，精通多种技术栈。我参与了电子商务、教育、金融等多个行业的项目，能够快速适应不同领域的需求。
+
+我对前沿技术如人工智能和区块链有浓厚的兴趣，关注这些领域的最新发展。通过参与开源项目，我与全球开发者合作，共享知识和经验。
+
+我的目标是不断提升自己的技术能力，帮助企业和个人实现数字化梦想。</p>
+            <p>热爱学习新技术，善于解决复杂问题。</p>
         </div>
     </section>
+
     <section id="skills">
         <div class="container">
-            <h2>我的技能</h2>
-            <ul>
-                <li>前端开发：HTML5, CSS3, JavaScript, React, Flutter</li>
-                <li>后端开发：Node.js, Express, MongoDB, SQL, PostgreSQL</li>
-                <li>运维：Linux, Docker, AWS</li>
-                <li>产品检测：自动化测试, 单元测试, 性能优化</li>
+            <h2>擅长技能</h2>
+            <ul class="project-points">
+                <li>
+                    前端开发：HTML5, CSS3, JavaScript, React, Flutter
+                </li>
+                <li>
+                    后端开发：Node.js, Express, MongoDB, SQL, PostgreSQL
+                </li>
+                <li>
+                    运维：Linux, Docker, AWS
+                </li>
+                <li>
+                    产品检测：自动化测试, 单元测试, 性能优化
+                </li>
             </ul>
         </div>
     </section>
-    <footer>
+
+    <section id="projects">
         <div class="container">
-            <p>&copy; 2024 姜广的个人网页 | 仅供个人使用</p>
-            <p class="contact-heading">可通过以下方式与我联系：</p>
-            <div class="contact-icons">
-                <img src="qq_爱给网_aigei_com.png" alt="QQ" onclick="toggleQrCode('qq')">
-                <img src="icon_微信-logo_爱给网_aigei_com.png" alt="微信" onclick="toggleQrCode('wechat')">
-            </div>
-            <div class="qr-code" id="qqCode">
-                <img src="qqcode.png" alt="QQ二维码">
-            </div>
-            <div class="qr-code" id="wechatCode">
-                <img src="wechatcode.png" alt="微信二维码">
+            <h2>项目经验</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>智慧校园管理系统</h3>
+                    <p class="project-duration">2023.06 - 2023.12</p>
+                    <div class="project-content">
+                        <p class="project-desc">负责系统的整体架构设计和核心功能开发</p>
+                        <ul class="project-points">
+                            <li>使用 Vue3 + TypeScript 开发前端，采用 Element Plus 组件库</li>
+                            <li>基于 Spring Boot 开发后端 RESTful API，实现数据库设计和业务逻辑</li>
+                            <li>实现了学生信息管理、课程管理、成绩管理等核心功能</li>
+                            <li>通过 Redis 缓存优化查询性能，提升访问速度 50%</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>企业级 CRM 系统</h3>
+                    <p class="project-duration">2023.01 - 2023.05</p>
+                    <div class="project-content">
+                        <p class="project-desc">担任前端技术负责人，负责架构设计和团队管理</p>
+                        <ul class="project-points">
+                            <li>使用 React + Redux 构建前端框架，实现组件化开发</li>
+                            <li>设计实现了客户管理、销售跟进、数据分析等模块</li>
+                            <li>通过 WebSocket 实现实时消息通知功能</li>
+                            <li>使用 ECharts 开发数据可视化面板，提升数据展示效果</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>移动端商城小程序</h3>
+                    <p class="project-duration">2022.07 - 2022.12</p>
+                    <div class="project-content">
+                        <p class="project-desc">独立负责小程序的开发和上线运维</p>
+                        <ul class="project-points">
+                            <li>使用原生微信小程序开发，接入微信支付功能</li>
+                            <li>实现商品展示、购物车、订单管理等核心功能</li>
+                            <li>通过云开发实现后端服务，降低开发和维护成本</li>
+                            <li>优化图片加载和页面渲染，提升用户体验</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>联系方式</h2>
+            <div class="contact-buttons">
+                <button class="contact-button" onclick="toggleQrCode('qq')">
+                    <i class="fab fa-qq"></i>
+                </button>
+                <button class="contact-button" onclick="toggleQrCode('wechat')">
+                    <i class="fab fa-weixin"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="qqCode" class="qr-code">
+        <img src="qq_code.png" alt="QQ二维码">
+    </div>
+
+    <div id="wechatCode" class="qr-code">
+        <img src="wechat_code.png" alt="微信二维码">
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Angus的个人简历  网站版权仅个人所有</p>
     </footer>
+
     <script>
         function toggleQrCode(type) {
-            var qqCode = document.getElementById('qqCode');
-            var wechatCode = document.getElementById('wechatCode');
+            const qqCode = document.getElementById('qqCode');
+            const wechatCode = document.getElementById('wechatCode');
+
             if (type === 'qq') {
-                qqCode.style.display = qqCode.style.display === 'block' ? 'none' : 'block';
-                wechatCode.style.display = 'none';
+                qqCode.classList.toggle('active');
+                wechatCode.classList.remove('active');
             } else if (type === 'wechat') {
-                wechatCode.style.display = wechatCode.style.display === 'block' ? 'none' : 'block';
-                qqCode.style.display = 'none';
+                wechatCode.classList.toggle('active');
+                qqCode.classList.remove('active');
             }
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.contact-icons img, .qr-code')) {
-                    qqCode.style.display = 'none';
-                    wechatCode.style.display = 'none';
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.getAttribute('data-width');
                 }
             });
-        }
+        });
+
+        document.querySelectorAll('.skill-progress').forEach(bar => {
+            observer.observe(bar);
+        });
+
+        document.addEventListener('click', function(event) {
+            const qqCode = document.getElementById('qqCode');
+            const wechatCode = document.getElementById('wechatCode');
+
+            if (!event.target.closest('.contact-button') &&
+                !event.target.closest('.qr-code')) {
+                qqCode.classList.remove('active');
+                wechatCode.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
